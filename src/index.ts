@@ -1,4 +1,9 @@
 import { startingPosition } from './startingPosition';
 import { getCell } from './GameState';
+import type { Position } from './Position';
 
-console.log(getCell(startingPosition, 'd1'));
+const checkCell = (cell: Position) =>
+	console.log(cell, getCell(startingPosition, cell));
+
+checkCell('d1');
+checkCell('d8');
