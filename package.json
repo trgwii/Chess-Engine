@@ -9,9 +9,10 @@
 		"lintf": "npm run lint -- --fix",
 		"madge": "madge src/index.ts",
 		"circular": "npm run madge -- -c",
-		"graph": "npm run madge -- -i docs/graph.svg",
+		"graph": "npm run madge -- -i docs/graph.svg --include-npm",
 		"docs": "npm run graph",
 		"build": "npm run test && tsc",
+		"buildall": "npm run docs && npm run build",
 		"dev": "ts-node src/index.ts",
 		"start": "node ."
 	},
