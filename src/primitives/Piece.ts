@@ -1,11 +1,13 @@
-export type Sets = 'white' | 'black';
+import type { Side } from './Side';
 
-export type SetPiece<Set extends Sets> =
-	| { set: Set; kind: 'K' }
-	| { set: Set; kind: 'Q' }
-	| { set: Set; kind: 'R' }
-	| { set: Set; kind: 'B' }
-	| { set: Set; kind: 'N' }
-	| { set: Set; kind: 'P' };
+export type Set = 'white' | 'black';
 
-export type Piece = SetPiece<Sets>;
+export type SetPiece<S extends Set> =
+	| { set: S; kind: 'K' }
+	| { set: S; kind: 'Q' }
+	| { set: S; kind: 'R'; side: Side }
+	| { set: S; kind: 'B' }
+	| { set: S; kind: 'N' }
+	| { set: S; kind: 'P' };
+
+export type Piece = SetPiece<Set>;

@@ -1,10 +1,10 @@
-import { startingPosition } from './primitives/startingPosition';
+import { initialBoard } from './primitives/initialBoard';
 import { getCell } from './primitives/Board';
 import type { Position } from './primitives/Position';
 import { Piece } from './primitives/Piece';
 
 const checkCell = (cell: Position) =>
-	console.log(cell, getCell(cell, startingPosition));
+	console.log(cell, getCell(cell, initialBoard));
 
 checkCell('d1');
 checkCell('d8');
