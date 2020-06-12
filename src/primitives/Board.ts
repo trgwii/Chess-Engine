@@ -1,5 +1,11 @@
 import { Position, files, isFile, ranks, isRank } from './Position';
-import type { Board, Piece } from './Board';
+import type { Piece } from './Piece';
+
+export type Cell = Piece | undefined;
+
+export type Rank = [Cell, Cell, Cell, Cell, Cell, Cell, Cell, Cell];
+
+export type Board = [Rank, Rank, Rank, Rank, Rank, Rank, Rank, Rank];
 
 export const positionToCoords = (pos: Position): [number, number] => {
 	const [file, rank] = pos.split('');
@@ -16,7 +22,3 @@ export const getCell = (
 	const [file, rank] = positionToCoords(position);
 	return board[rank][file];
 };
-
-export interface GameState {
-	board: Board;
-}

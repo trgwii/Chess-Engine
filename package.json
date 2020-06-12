@@ -4,8 +4,9 @@
 	"description": "A simple Chess engine in TypeScript",
 	"main": "dist/index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"lint": "eslint src/**/*.ts --fix",
+		"test": "npm run lint",
+		"lint": "eslint src/**/*.ts",
+		"lintf": "npm run lint -- --fix",
 		"build": "npm run lint && tsc",
 		"dev": "ts-node src/index.ts",
 		"start": "node ."
