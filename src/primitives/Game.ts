@@ -5,7 +5,6 @@ import { Position } from './Position';
 import { Move } from './Move';
 
 export interface Game {
-	turn: Set;
 	castling: {
 		[k in Set]: { [k in Side]: boolean };
 	};
@@ -15,3 +14,12 @@ export interface Game {
 	board: Board;
 	history: Move[];
 }
+
+export const move = (move: Move, game: Game): Game => {
+	return game;
+};
+export const availableMoves = (position: Position, game: Game): Move[] => {
+	position;
+	game;
+	return [{ piece: { set: 'white', kind: 'P' }, from: 'e2', to: 'e4' }];
+};

@@ -11,7 +11,7 @@
 		"circular": "npm run madge -- -c",
 		"graph": "npm run madge -- -i docs/graph.svg --include-npm",
 		"docs": "npm run graph",
-		"build": "npm run test && tsc",
+		"build": "npm run test -- -- --fix && tsc",
 		"buildall": "npm run docs && npm run build",
 		"dev": "ts-node src/index.ts",
 		"start": "node ."
