@@ -4,7 +4,7 @@ import type { Position } from './primitives/Position';
 import { Piece } from './primitives/Piece';
 
 const checkCell = (cell: Position) =>
-	console.log(cell, getCell(startingPosition, cell));
+	console.log(cell, getCell(cell, startingPosition));
 
 checkCell('d1');
 checkCell('d8');

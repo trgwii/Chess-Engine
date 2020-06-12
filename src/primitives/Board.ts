@@ -16,8 +16,8 @@ export const positionToCoords = (pos: Position): [number, number] => {
 };
 
 export const getCell = (
-	board: Board,
-	position: Position
+	position: Position,
+	board: Board
 ): Piece | undefined => {
 	const [file, rank] = positionToCoords(position);
 	return board[rank][file];
