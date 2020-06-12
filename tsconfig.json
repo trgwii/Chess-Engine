@@ -4,9 +4,10 @@
 		"target": "ES2020",
 		"strict": true,
 		"module":"CommonJS",
+		"declaration": true,
 		"outDir": "dist"
 	},
 	"include": [
-		"src/index.ts"
+		"src/**/*.ts"
 	]
 }
