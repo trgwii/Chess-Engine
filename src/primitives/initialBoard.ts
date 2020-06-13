@@ -22,44 +22,44 @@ export const initialBoard: Board = [
 		{ set: 'white', kind: 'P' }
 	],
 	[
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{}
 	],
 	[
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{}
 	],
 	[
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{}
 	],
 	[
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{}
 	],
 	[
 		{ set: 'black', kind: 'P' },

@@ -1,7 +1,7 @@
 import { Position, files, isFile, ranks, isRank } from './Position';
 import type { Piece } from './Piece';
 
-export type Cell = Piece | undefined;
+export type Cell = Piece | {};
 
 export type Rank = [Cell, Cell, Cell, Cell, Cell, Cell, Cell, Cell];
 
@@ -18,7 +18,19 @@ export const positionToCoords = (pos: Position): [number, number] => {
 export const getCell = (
 	position: Position,
 	board: Board
-): Piece | undefined => {
+): Piece | {} => {
 	const [file, rank] = positionToCoords(position);
 	return board[rank][file];
+};
+
+export const setCell = (
+	from: Position,
+	to: Position,
+	board: Board
+) => {
+	const [fileFrom, rankFrom] = positionToCoords(from);
+	const [fileTo, rankTo] = positionToCoords(to);
+	const fromCell = board[rankFrom][fileFrom];
+	board[rankFrom][fileFrom] = board[rankTo][fileTo];
+	board[rankTo][fileTo] = fromCell;
 };

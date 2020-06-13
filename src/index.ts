@@ -1,35 +1,25 @@
-import { initialBoard } from './primitives/initialBoard';
-import { getCell } from './primitives/Board';
-import type { Position } from './primitives/Position';
-import { Piece } from './primitives/Piece';
-import { Move, stringifyMoves } from './primitives/Move';
+import { play } from './play';
+export const newGame = play();
 
-const checkCell = (cell: Position) =>
-	console.log(cell, '->', getCell(cell, initialBoard));
+console.log(newGame.showBoard());
 
-checkCell('d1');
-checkCell('d8');
-
-export const p: Piece = { set: 'white', kind: 'Q' };
-
-export const whiteMove: Move = {
+newGame.move({
 	piece: { set: 'white', kind: 'P' },
 	from: 'e2',
 	to: 'e4'
-};
+});
 
-export const blackMove: Move = {
+newGame.move({
 	piece: { set: 'black', kind: 'P' },
 	from: 'e7',
 	to: 'e5'
-};
+});
 
-export const whiteMove2: Move = {
+newGame.move({
 	piece: { set: 'white', kind: 'N' },
 	from: 'g1',
 	to: 'f3'
-};
+});
 
-export const history = [whiteMove, blackMove, whiteMove2];
-
-console.log(stringifyMoves(history).join('\n'));
+console.log(newGame.showLog());
+console.log(newGame.showBoard());
