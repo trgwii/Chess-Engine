@@ -23,7 +23,25 @@ export const getCell = (
 	return board[rank][file];
 };
 
+export const updateCell = (
+	position: Position,
+	piece: Piece | undefined,
+	board: Board
+): Board => {
+	const [file, rank] = positionToCoords(position);
+	return [
+		...board.slice(0, rank),
+		[
+			...board[rank].slice(0, file),
+			piece,
+			...board[rank].slice(file + 1)
+		] as Rank,
+		...board.slice(rank + 1)
+	] as Board;
+};
+
 // TODO: move this logic into Game.ts -> move(), make pure
+// Update: replacement candidate function updateCell()?
 export const setCell = (
 	from: Position,
 	to: Position,
