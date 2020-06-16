@@ -1,9 +1,5 @@
-import { getCell, Board, Cell } from './Board';
-import { Position } from './Position';
-
+import { Cell } from './Board';
 export const validatePiece = (requested: Cell, stored: Cell): boolean => {
-	console.log(Object.values(requested || {}));
-	console.log(Object.values(stored || {}));
 	const requestedProperties = Object.values(requested || {});
 	const storedProperties = Object.values(stored || {});
 	return (
@@ -13,5 +9,3 @@ export const validatePiece = (requested: Cell, stored: Cell): boolean => {
 		)
 	);
 };
-export const validateMove = (position: Position, board: Board): boolean =>
-	getCell(position, board) === undefined;

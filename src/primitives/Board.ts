@@ -31,7 +31,7 @@ export const setCell = (
 	const [fileFrom, rankFrom] = positionToCoords(from);
 	const [fileTo, rankTo] = positionToCoords(to);
 	const fromCell = board[rankFrom][fileFrom];
-	board[rankFrom][fileFrom] = board[rankTo][fileTo];
+	board[rankFrom][fileFrom] = undefined;
 	board[rankTo][fileTo] = fromCell;
 	return;
 };

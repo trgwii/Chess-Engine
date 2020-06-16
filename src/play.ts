@@ -1,22 +1,30 @@
-import { Move, stringifyMoves } from './primitives/Move';
+import { Move } from './primitives/Move';
 import { getCell, setCell } from './primitives/Board';
 import { initialBoard } from './primitives/initialBoard';
-import { validatePiece, validateMove } from './primitives/validators';
+import { validatePiece } from './primitives/validators';
+import { symbols } from './primitives/Piece';
 
 export const play = () => {
     const gameBoard = initialBoard;
-    
+
     return {
         move: (move: Move) => {
             const cellRequest = move.piece;
-            console.log(cellRequest);
-            console.log(getCell(move.from, gameBoard));
             const cellState = getCell(move.from, gameBoard);
             if(!validatePiece( cellRequest, cellState )) throw 'there is nothing to control';
-            if(!validateMove(move.to, gameBoard)) throw 'invalid move';
             setCell(move.from, move.to, gameBoard);
             return move;
         },
-        showBoard: () => gameBoard
+        showBoard: () => {
+            let boardPrint = '';
+            for (const rank of gameBoard) {
+                for (const file of rank) {
+                    const symbolSets = symbols[(file || {kind: 'none'}).kind];
+                    boardPrint += ` ${symbolSets[(file || {set: 'white'}).set]} `;
+                }
+                boardPrint += '\n';
+            }
+            console.log('%c'+boardPrint, 'font-size: 16pt');
+        }
     }
 }
