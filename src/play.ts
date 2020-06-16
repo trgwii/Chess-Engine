@@ -1,11 +1,9 @@
-import { History } from './primitives/History';
 import { Move, stringifyMoves } from './primitives/Move';
 import { getCell, setCell } from './primitives/Board';
 import { initialBoard } from './primitives/initialBoard';
 import { validatePiece, validateMove } from './primitives/validators';
 
 export const play = () => {
-    const gameHistory: History = [];
     const gameBoard = initialBoard;
     
     return {
@@ -17,10 +15,8 @@ export const play = () => {
             if(!validatePiece( cellRequest, cellState )) throw 'there is nothing to control';
             if(!validateMove(move.to, gameBoard)) throw 'invalid move';
             setCell(move.from, move.to, gameBoard);
-            gameHistory.push(move);
             return move;
         },
-        showLog: () => stringifyMoves(gameHistory).join('\n'),
         showBoard: () => gameBoard
     }
 }

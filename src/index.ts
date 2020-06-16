@@ -21,5 +21,4 @@ newGame.move({
 	to: 'f3'
 });
 
-console.log(newGame.showLog());
 console.log(newGame.showBoard());
