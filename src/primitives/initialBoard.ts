@@ -1,4 +1,15 @@
-import type { Board } from './Board';
+import type { Board, Rank } from './Board';
+
+export const emptyRank: Rank = [
+	undefined,
+	undefined,
+	undefined,
+	undefined,
+	undefined,
+	undefined,
+	undefined,
+	undefined
+];
 
 export const initialBoard: Board = [
 	[
@@ -21,46 +32,10 @@ export const initialBoard: Board = [
 		{ set: 'white', kind: 'P' },
 		{ set: 'white', kind: 'P' }
 	],
-	[
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined
-	],
-	[
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined
-	],
-	[
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined
-	],
-	[
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		undefined
-	],
+	emptyRank,
+	emptyRank,
+	emptyRank,
+	emptyRank,
 	[
 		{ set: 'black', kind: 'P' },
 		{ set: 'black', kind: 'P' },

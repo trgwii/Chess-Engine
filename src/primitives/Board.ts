@@ -23,6 +23,7 @@ export const getCell = (
 	return board[rank][file];
 };
 
+// TODO: move this logic into Game.ts -> move(), make pure
 export const setCell = (
 	from: Position,
 	to: Position,
