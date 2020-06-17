@@ -2,7 +2,6 @@ import { Move } from './primitives/Move';
 import { getCell, setCell } from './primitives/Board';
 import { initialBoard } from './primitives/initialBoard';
 import { validatePiece } from './primitives/validators';
-import { symbols } from './cli/strings';
 import { showBoard } from './cli/showBoard';
 
 // TODO: make use of Game

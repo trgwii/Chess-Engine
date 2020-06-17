@@ -1,6 +1,5 @@
 import { Board } from '../primitives/Board';
 import { symbols } from './strings';
-import { files } from '../primitives/Position';
 
 export const showBoard = (board: Board): string => {
 	return (
