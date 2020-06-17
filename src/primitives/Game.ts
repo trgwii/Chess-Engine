@@ -147,6 +147,8 @@ export const move = (move: Move, game: Game): Game => {
 	}
 	return makeMove(move, game);
 };
+
+// TODO: implement availableMoves
 export const availableMoves = (position: Position, game: Game): Move[] => {
 	position;
 	game;
