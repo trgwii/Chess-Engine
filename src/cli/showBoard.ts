@@ -4,8 +4,7 @@ import { Set } from '../primitives/Piece';
 
 export const showBoard = (board: Board, perspective: Set = 'white'): string => {
 	return (
-		'/⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\\' +
-		'\n' +
+		'╭────────────────╮\n' +
 		(perspective === 'white' ? [...board].reverse() : board)
 			.map(
 				(rank, i) =>
@@ -17,23 +16,21 @@ export const showBoard = (board: Board, perspective: Set = 'white'): string => {
 								cell?.set ?? color
 							];
 						})
-						.join('') +
-					'│' +
+						.join(' ') +
+					' │' +
 					String(perspective === 'white' ? 8 - i : i + 1)
 			)
 			.join('\n') +
-		'\n' +
-		'\\⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯/' +
-		'\n ' +
+		'\n╰────────────────╯\n ' +
 		(files => (perspective === 'white' ? files : [...files].reverse()))([
-			' A ',
-			' B ',
-			' C ',
-			' D ',
-			' E ',
-			' F ',
-			' G ',
-			' H '
-		]).join('')
+			'Ⓐ',
+			'Ⓑ',
+			'Ⓒ',
+			'Ⓓ',
+			'Ⓔ',
+			'Ⓕ',
+			'Ⓖ',
+			'Ⓗ'
+		]).join(' ')
 	);
 };
