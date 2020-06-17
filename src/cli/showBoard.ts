@@ -1,13 +1,13 @@
 import { Board } from '../primitives/Board';
 import { symbols } from './strings';
+import { Set } from '../primitives/Piece';
 
-export const showBoard = (board: Board): string => {
+export const showBoard = (board: Board, perspective: Set = 'white'): string => {
 	return (
-		[...board]
-			.reverse()
+		(perspective === 'white' ? [...board].reverse() : board)
 			.map(
 				(rank, i) =>
-					rank
+					(perspective === 'white' ? rank : [...rank].reverse())
 						.map(
 							cell =>
 								symbols[cell?.kind ?? 'none'][
@@ -16,8 +16,19 @@ export const showBoard = (board: Board): string => {
 						)
 						.join(' ') +
 					'  ' +
-					String(8 - i)
+					String(perspective === 'white' ? 8 - i : i + 1)
 			)
-			.join('\n') + '\nⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ'
+			.join('\n') +
+		'\n' +
+		(files => (perspective === 'white' ? files : [...files].reverse()))([
+			'ⓐ',
+			'ⓑ',
+			'ⓒ',
+			'ⓓ',
+			'ⓔ',
+			'ⓕ',
+			'ⓖ',
+			'ⓗ'
+		]).join(' ')
 	);
 };
