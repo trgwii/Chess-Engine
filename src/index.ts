@@ -8,8 +8,6 @@ import { showBoard } from './cli/showBoard';
 import { move } from './primitives/Game';
 import { initialGame } from './primitives/initialGame';
 
-export const last = <T>(list: T[]): T => list[list.length - 1];
-
 const showMove = (move: Move) =>
 	`${move.piece.set} moved ${move.piece.kind} to ${move.to}`;
 
@@ -46,15 +44,15 @@ console.log(stringifyMoves(history).join('\n'));
 console.log(showBoard(initialGame.board) + '\n');
 const game2 = move(whiteMove, initialGame);
 
-console.log(showMove(last(game2.history)));
+console.log(showMove(whiteMove));
 console.log(showBoard(game2.board) + '\n');
 const game3 = move(blackMove, game2);
 
-console.log(showMove(last(game3.history)));
+console.log(showMove(blackMove));
 console.log(showBoard(game3.board) + '\n');
 const game4 = move(whiteMove2, game3);
 
-console.log(showMove(last(game4.history)));
+console.log(showMove(whiteMove2));
 console.log(showBoard(game4.board) + '\n');
 
 export const newGame = play();

@@ -3,6 +3,7 @@ import type { Side } from './Side';
 import { Set, Piece, equals, oppositeSet } from './Piece';
 import { Position } from './Position';
 import { Move } from './Move';
+import { last } from '../utils';
 
 export interface Game {
 	castling: {
@@ -46,6 +47,10 @@ export const canMove = (
 	game: Game,
 	ignoreChecks = false
 ): boolean => {
+	const turn = oppositeSet(last(game.history)?.piece.set ?? 'black');
+	if (move.piece.set !== turn) {
+		return false;
+	}
 	const { piece, from, to } = move;
 	const [fromFile, fromRank] = positionToCoords(from);
 	const [toFile, toRank] = positionToCoords(to);

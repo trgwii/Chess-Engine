@@ -7,8 +7,6 @@ import { getCell } from './primitives/Board';
 import { isPosition } from './primitives/Position';
 import { Move } from './primitives/Move';
 
-export const last = <T>(list: T[]): T => list[list.length - 1];
-
 export const showMove = (move: Move): string =>
 	`${move.piece.set} moved ${move.piece.kind} to ${move.to}`;
 
