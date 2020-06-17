@@ -3,6 +3,7 @@ import { getCell, setCell } from './primitives/Board';
 import { initialBoard } from './primitives/initialBoard';
 import { validatePiece } from './primitives/validators';
 import { symbols } from './cli/strings';
+import { showBoard } from './cli/showBoard';
 
 // TODO: make use of Game
 export const play = (): {
@@ -20,18 +21,6 @@ export const play = (): {
 			setCell(move.from, move.to, gameBoard);
 			return move;
 		},
-		showBoard: () => {
-			let boardPrint = '';
-			for (const rank of gameBoard) {
-				for (const file of rank) {
-					const symbolSets = symbols[(file || { kind: 'none' }).kind];
-					boardPrint += ` ${
-						symbolSets[(file || { set: 'white' }).set]
-					} `;
-				}
-				boardPrint += '\n';
-			}
-			console.log('%c' + boardPrint, 'font-size: 16pt');
-		}
+		showBoard: () => console.log(showBoard(gameBoard))
 	};
 };

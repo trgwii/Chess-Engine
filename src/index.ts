@@ -4,6 +4,14 @@ import type { Position } from './primitives/Position';
 import { Piece } from './primitives/Piece';
 import { Move, stringifyMoves } from './primitives/Move';
 import { play } from './play';
+import { showBoard } from './cli/showBoard';
+import { move } from './primitives/Game';
+import { initialGame } from './primitives/initialGame';
+
+export const last = <T>(list: T[]): T => list[list.length - 1];
+
+const showMove = (move: Move) =>
+	`${move.piece.set} moved ${move.piece.kind} to ${move.to}`;
 
 const checkCell = (cell: Position) =>
 	console.log(cell, '->', getCell(cell, initialBoard));
@@ -34,6 +42,20 @@ export const whiteMove2: Move = {
 export const history = [whiteMove, blackMove, whiteMove2];
 
 console.log(stringifyMoves(history).join('\n'));
+
+console.log(showBoard(initialGame.board) + '\n');
+const game2 = move(whiteMove, initialGame);
+
+console.log(showMove(last(game2.history)));
+console.log(showBoard(game2.board) + '\n');
+const game3 = move(blackMove, game2);
+
+console.log(showMove(last(game3.history)));
+console.log(showBoard(game3.board) + '\n');
+const game4 = move(whiteMove2, game3);
+
+console.log(showMove(last(game4.history)));
+console.log(showBoard(game4.board) + '\n');
 
 export const newGame = play();
 

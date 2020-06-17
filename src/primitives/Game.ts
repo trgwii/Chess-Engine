@@ -72,6 +72,14 @@ export const canMove = (
 			return false;
 		}
 	}
+	if (piece.kind === 'P') {
+		// TODO: Add logic
+		return true;
+	}
+	if (piece.kind === 'N') {
+		// TODO: Add logic
+		return true;
+	}
 	// TODO: Add logic for all pieces
 	return false;
 };
