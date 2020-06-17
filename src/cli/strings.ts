@@ -24,7 +24,7 @@ export const symbols = {
 		black: '♙'
 	},
 	none: {
-		white: ' ',
-		black: ' '
+		white: '□',
+		black: '▧'
 	}
 };
