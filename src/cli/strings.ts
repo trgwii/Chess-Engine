@@ -1,30 +1,30 @@
 export const symbols = {
 	R: {
-		white: '♜',
-		black: '♖'
+		white: ' ♜ ',
+		black: ' ♖ '
 	},
 	N: {
-		white: '♞',
-		black: '♘'
+		white: ' ♞ ',
+		black: ' ♘ '
 	},
 	B: {
-		white: '♝',
-		black: '♗'
+		white: ' ♝ ',
+		black: ' ♗ '
 	},
 	Q: {
-		white: '♛',
-		black: '♕'
+		white: ' ♛ ',
+		black: ' ♕ '
 	},
 	K: {
-		white: '♚',
-		black: '♔'
+		white: ' ♚ ',
+		black: ' ♔ '
 	},
 	P: {
-		white: '♟',
-		black: '♙'
+		white: ' ♟ ',
+		black: ' ♙ '
 	},
 	none: {
-		white: '□',
-		black: '▧'
+		white: ' ▣ ',
+		black: ' ▣ '
 	}
 };
