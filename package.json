@@ -7,7 +7,7 @@
 		"test": "npm run circular && npm run lint",
 		"lint": "eslint src/**/*.ts",
 		"lintf": "npm run lint -- --fix",
-		"madge": "madge src/index.ts",
+		"madge": "madge src --extensions ts",
 		"circular": "npm run madge -- -c",
 		"graph": "npm run madge -- -i docs/graph.svg --include-npm",
 		"docs": "npm run graph",

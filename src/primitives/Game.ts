@@ -74,6 +74,10 @@ export const canMove = (
 	}
 	if (piece.kind === 'P') {
 		// TODO: Add more logic
+		if (piece.set === 'white' ? fromRank > toRank : fromRank < toRank) {
+			// Pawn can only move forwards
+			return false;
+		}
 		if (
 			fromFile !== toFile &&
 			game.board[toRank][toFile]?.set !== oppositeSet(piece.set) &&

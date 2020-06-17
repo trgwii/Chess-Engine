@@ -24,3 +24,6 @@ export type Position =
 	| FPosition
 	| GPosition
 	| HPosition;
+
+export const isPosition = (x: string): x is Position =>
+	x.length === 2 && isFile(x[0]) && isRank(x[1]);
