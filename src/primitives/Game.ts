@@ -37,10 +37,15 @@ export const attackedPosition = (
 	board;
 	// TODO: check if cell is being attacked by a piece
 	// Can be implemented by seeing if any opponent piece has canMakeMove() -> true
+	/// (with ignoreChecks = true)
 	return false;
 };
 
-export const canMakeMove = (move: Move, game: Game): boolean => {
+export const canMove = (
+	move: Move,
+	game: Game,
+	ignoreChecks = false
+): boolean => {
 	const { piece, from, to } = move;
 	if (piece.kind === 'K') {
 		const [fromFile, fromRank] = positionToCoords(from);
@@ -59,6 +64,9 @@ export const canMakeMove = (move: Move, game: Game): boolean => {
 			// same color piece already on square
 			return false;
 		}
+		if (ignoreChecks) {
+			return true;
+		}
 		if (attackedPosition(from, oppositeSet(piece.set), game.board)) {
 			// King cannot move into check
 			return false;
@@ -68,25 +76,26 @@ export const canMakeMove = (move: Move, game: Game): boolean => {
 	return false;
 };
 
+export const makeMove = (move: Move, game: Game): Game => ({
+	...game,
+	history: [...game.history, move],
+	board: updateCell(
+		move.to,
+		move.piece,
+		updateCell(move.from, undefined, game.board)
+	)
+});
+
 export const move = (move: Move, game: Game): Game => {
 	if (!pieceInPosition(move.piece, move.from, game.board)) {
 		throw new Error('No piece at ' + move.from);
 	}
-	if (!canMakeMove(move, game)) {
+	if (!canMove(move, game)) {
 		throw new Error(
 			move.piece.kind + ' at ' + move.from + ' cannot move to ' + move.to
 		);
 	}
-	// Sample code for move completion
-	return {
-		...game,
-		history: [...game.history, move],
-		board: updateCell(
-			move.to,
-			move.piece,
-			updateCell(move.from, undefined, game.board)
-		)
-	};
+	return makeMove(move, game);
 };
 export const availableMoves = (position: Position, game: Game): Move[] => {
 	position;
