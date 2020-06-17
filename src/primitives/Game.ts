@@ -47,9 +47,9 @@ export const canMove = (
 	ignoreChecks = false
 ): boolean => {
 	const { piece, from, to } = move;
+	const [fromFile, fromRank] = positionToCoords(from);
+	const [toFile, toRank] = positionToCoords(to);
 	if (piece.kind === 'K') {
-		const [fromFile, fromRank] = positionToCoords(from);
-		const [toFile, toRank] = positionToCoords(to);
 		if (
 			fromFile > toFile + 1 ||
 			fromFile < toFile - 1 ||
@@ -73,7 +73,40 @@ export const canMove = (
 		}
 	}
 	if (piece.kind === 'P') {
-		// TODO: Add logic
+		// TODO: Add more logic
+		if (
+			fromFile !== toFile &&
+			game.board[toRank][toFile]?.set !== oppositeSet(piece.set) &&
+			game.passant[oppositeSet(piece.set)] !== to
+		) {
+			// Pawn can't move diagonally if there is no capture of opposite piece and a passant move was not played previously
+			// TODO: set passant from here when there is a passant move, need to modify return signature of this function
+			// passant coordinate should be set to the coordinate passed by a pawn moving 2 spaces (if e2 -> e4, then passant should be set to e3)
+			// passant should always be unset when any move that isn't a pawn double move happens
+			return false;
+		}
+		if (
+			piece.set === 'white'
+				? fromRank + 2 < toRank
+				: fromRank - 2 > toRank
+		) {
+			// Piece can't move more than 2 spaces in any case
+			return false;
+		}
+		if (
+			piece.set === 'white'
+				? fromRank + 1 < toRank
+				: fromRank - 1 > toRank
+		) {
+			// Pawn can't move two spaces unless it is at starting position
+			// ranks are 0-indexed
+			if (piece.set === 'white' && fromRank !== 1) {
+				return false;
+			}
+			if (piece.set === 'black' && fromRank !== 6) {
+				return false;
+			}
+		}
 		return true;
 	}
 	if (piece.kind === 'N') {
