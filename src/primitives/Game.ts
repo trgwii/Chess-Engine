@@ -161,11 +161,11 @@ export const availableMovesFor = (position: Position, game: Game): Move[] => {
 		return [];
 	}
 	return positions.flatMap(next => {
+		if (next === position) {
+			return [];
+		}
 		const move: Move = { from: position, to: next, piece };
-		return getCell(next, game.board) == null &&
-			canMove({ from: position, to: next, piece }, game)
-			? [move]
-			: [];
+		return canMove({ from: position, to: next, piece }, game) ? [move] : [];
 	});
 };
 
