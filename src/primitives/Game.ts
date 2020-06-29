@@ -1,7 +1,14 @@
-import { Board, getCell, positionToCoords, updateCell } from './Board';
+import {
+	Board,
+	getCell,
+	positionToCoords,
+	updateCell,
+	coord,
+	coordsToPosition
+} from './Board';
 import type { Side } from './Side';
 import { Set, Piece, equals, oppositeSet } from './Piece';
-import { Position } from './Position';
+import { Position, positions } from './Position';
 import { Move } from './Move';
 import { last } from '../utils';
 
@@ -148,9 +155,30 @@ export const move = (move: Move, game: Game): Game => {
 	return makeMove(move, game);
 };
 
+export const availableMovesFor = (position: Position, game: Game): Move[] => {
+	const piece = getCell(position, game.board);
+	if (!piece) {
+		return [];
+	}
+	return positions.flatMap(next => {
+		const move: Move = { from: position, to: next, piece };
+		return getCell(next, game.board) == null &&
+			canMove({ from: position, to: next, piece }, game)
+			? [move]
+			: [];
+	});
+};
+
 // TODO: implement availableMoves
-export const availableMoves = (position: Position, game: Game): Move[] => {
-	position;
-	game;
-	return [{ piece: { set: 'white', kind: 'P' }, from: 'e2', to: 'e4' }];
+export const availableMoves = (game: Game): Move[] => {
+	const turn = oppositeSet(last(game.history)?.piece.set ?? 'black');
+	return game.board
+		.flatMap((rank, f) =>
+			rank.flatMap((cell, r) =>
+				cell?.set === turn
+					? [coordsToPosition(f as coord, r as coord)]
+					: []
+			)
+		)
+		.flatMap(position => availableMovesFor(position, game));
 };

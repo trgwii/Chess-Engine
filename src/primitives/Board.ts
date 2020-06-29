@@ -15,6 +15,11 @@ export const positionToCoords = (pos: Position): [number, number] => {
 	return [files.indexOf(file), ranks.indexOf(rank)];
 };
 
+export type coord = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
+
+export const coordsToPosition = (file: coord, rank: coord): Position =>
+	(files[file] + ranks[rank]) as Position;
+
 export const getCell = (
 	position: Position,
 	board: Board

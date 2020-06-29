@@ -15,6 +15,10 @@ export type Rank = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8';
 export const ranks = ['1', '2', '3', '4', '5', '6', '7', '8'];
 export const isRank = (x: string): x is Rank => ranks.includes(x);
 
+export const positions = files.flatMap(file =>
+	ranks.flatMap(rank => (file + rank) as Position)
+);
+
 export type Position =
 	| APosition
 	| BPosition
