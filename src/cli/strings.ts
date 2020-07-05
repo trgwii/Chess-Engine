@@ -1,3 +1,4 @@
+/** Container object for unicode strings representing chess pieces */
 export const symbols = {
 	R: {
 		white: '♜',

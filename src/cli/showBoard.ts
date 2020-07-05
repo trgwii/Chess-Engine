@@ -2,6 +2,7 @@ import { Board } from '../primitives/Board';
 import { symbols } from './strings';
 import { Set } from '../primitives/Piece';
 
+/** Return a string suitable for displaying a board object in a text-based interface (like a terminal) */
 export const showBoard = (board: Board, perspective: Set = 'white'): string => {
 	return (
 		'╭────────────────╮\n' +

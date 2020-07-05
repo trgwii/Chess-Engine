@@ -1,12 +1,16 @@
 import { Position, files, isFile, ranks, isRank } from './Position';
 import type { Piece } from './Piece';
 
+/** A chess board cell (May contain a piece or be empty) */
 export type Cell = Piece | undefined;
 
+/** A chess board rank (aka horizontal row, classically numbered 1-8) */
 export type Rank = [Cell, Cell, Cell, Cell, Cell, Cell, Cell, Cell];
 
+/** An object representing a full chess board */
 export type Board = [Rank, Rank, Rank, Rank, Rank, Rank, Rank, Rank];
 
+/** Utility function to convert a chess-style position (e4) into a numeric representation */
 export const positionToCoords = (pos: Position): [number, number] => {
 	const [file, rank] = pos.split('');
 	if (!isFile(file) || !isRank(rank)) {
@@ -15,8 +19,10 @@ export const positionToCoords = (pos: Position): [number, number] => {
 	return [files.indexOf(file), ranks.indexOf(rank)];
 };
 
+/** Possible coordinates */
 export type coord = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
+/** Utility function to convert a numeric representation into a chess-style position (e4) */
 export const coordsToPosition = (file: coord, rank: coord): Position =>
 	(files[file] + ranks[rank]) as Position;
 

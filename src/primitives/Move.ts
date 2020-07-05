@@ -7,9 +7,11 @@ export type Move = {
 	to: Position;
 };
 
+/** Utility function to return a simple chess notation string representing a single piece move */
 export const stringifyMove = (move: Move): string =>
 	(move.piece.kind === 'P' ? '' : move.piece.kind) + move.to;
 
+/** Utility function to return an array of strings representing a series of chess moves */
 export const stringifyMoves = (moves: Move[]): string[] =>
 	moves.flatMap((move, i, moves) => {
 		const j = i + 1;

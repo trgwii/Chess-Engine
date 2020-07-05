@@ -10,7 +10,8 @@
 		"madge": "madge src --extensions ts",
 		"circular": "npm run madge -- -c",
 		"graph": "npm run madge -- -i docs/graph.svg --include-npm",
-		"docs": "npm run graph",
+		"typedoc": "typedoc",
+		"docs": "npm run typedoc && npm run graph",
 		"build": "npm run test -- -- --fix && tsc",
 		"buildall": "npm run docs && npm run build",
 		"dev": "ts-node src/index.ts",
@@ -26,15 +27,17 @@
 	"dependencies": {},
 	"devDependencies": {
 		"@types/node": "^14.0.14",
-		"@typescript-eslint/eslint-plugin": "^3.4.0",
-		"@typescript-eslint/parser": "^3.4.0",
-		"eslint": "^7.3.1",
+		"@typescript-eslint/eslint-plugin": "^3.5.0",
+		"@typescript-eslint/parser": "^3.5.0",
+		"eslint": "^7.4.0",
 		"eslint-config-prettier": "^6.11.0",
 		"eslint-plugin-prettier": "^3.1.4",
+		"eslint-plugin-tsdoc": "^0.2.5",
 		"madge": "^3.9.2",
 		"prettier": "^2.0.5",
 		"ts-node": "^8.10.2",
-		"typescript": "^3.9.5"
+		"typedoc": "^0.17.8",
+		"typescript": "^3.9.6"
 	},
 	"repository": {
 		"type": "git",
@@ -76,8 +79,11 @@
 			]
 		},
 		"plugins": [
-			"@typescript-eslint"
+			"@typescript-eslint",
+			"eslint-plugin-tsdoc"
 		],
-		"rules": {}
+		"rules": {
+			"tsdoc/syntax": "error"
+		}
 	}
 }

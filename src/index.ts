@@ -1,82 +1,23 @@
-import { initialBoard } from './primitives/initialBoard';
-import { getCell } from './primitives/Board';
-import type { Position } from './primitives/Position';
-import { Piece } from './primitives/Piece';
-import { Move, stringifyMoves } from './primitives/Move';
-import { play } from './play';
-import { showBoard } from './cli/showBoard';
-import { move } from './primitives/Game';
-import { initialGame } from './primitives/initialGame';
+export {
+	Board,
+	positionToCoords,
+	coordsToPosition,
+	getCell,
+	updateCell
+} from './primitives/Board';
 
-const showMove = (move: Move) =>
-	`${move.piece.set} moved ${move.piece.kind} to ${move.to}`;
+export {
+	Game,
+	pieceInPosition,
+	attackedPosition,
+	canMove,
+	move,
+	availableMovesFor,
+	availableMoves
+} from './primitives/Game';
 
-const checkCell = (cell: Position) =>
-	console.log(cell, '->', getCell(cell, initialBoard));
-
-checkCell('d1');
-checkCell('d8');
-
-export const p: Piece = { set: 'white', kind: 'Q' };
-
-export const whiteMove: Move = {
-	piece: { set: 'white', kind: 'P' },
-	from: 'e2',
-	to: 'e4'
-};
-
-export const blackMove: Move = {
-	piece: { set: 'black', kind: 'P' },
-	from: 'e7',
-	to: 'e5'
-};
-
-export const whiteMove2: Move = {
-	piece: { set: 'white', kind: 'N' },
-	from: 'g1',
-	to: 'f3'
-};
-
-export const history = [whiteMove, blackMove, whiteMove2];
-
-console.log(stringifyMoves(history).join('\n'));
-
-console.log(showBoard(initialGame.board) + '\n');
-const game2 = move(whiteMove, initialGame);
-
-console.log(showMove(whiteMove));
-console.log(showBoard(game2.board) + '\n');
-const game3 = move(blackMove, game2);
-
-console.log(showMove(blackMove));
-console.log(showBoard(game3.board) + '\n');
-const game4 = move(whiteMove2, game3);
-
-console.log(showMove(whiteMove2));
-console.log(showBoard(game4.board) + '\n');
-
-export const newGame = play();
-
-newGame.move({
-	piece: { set: 'white', kind: 'P' },
-	from: 'e2',
-	to: 'e4'
-});
-
-console.log(newGame.showBoard());
-
-newGame.move({
-	piece: { set: 'black', kind: 'P' },
-	from: 'e7',
-	to: 'e5'
-});
-
-console.log(newGame.showBoard());
-
-newGame.move({
-	piece: { set: 'white', kind: 'N' },
-	from: 'g1',
-	to: 'f3'
-});
-
-console.log(newGame.showBoard());
+export { initialBoard } from './primitives/initialBoard';
+export { initialGame } from './primitives/initialGame';
+export { Move, stringifyMove, stringifyMoves } from './primitives/Move';
+export { Side, Set, oppositeSet, Piece, equals } from './primitives/Piece';
+export { isFile, isRank, isPosition } from './primitives/Position';

@@ -11,6 +11,7 @@ export const emptyRank: Rank = [
 	undefined
 ];
 
+/** Starting board in a normal chess game */
 export const initialBoard: Board = [
 	[
 		{ set: 'white', kind: 'R', side: 'Q' },

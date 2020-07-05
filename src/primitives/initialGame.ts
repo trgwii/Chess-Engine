@@ -1,6 +1,7 @@
 import { initialBoard } from './initialBoard';
 import type { Game } from './Game';
 
+/** Starting game state in a normal chess game */
 export const initialGame: Game = {
 	castling: {
 		white: { K: true, Q: true },

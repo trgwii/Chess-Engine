@@ -7,5 +7,9 @@
 		"declaration": true,
 		"outDir": "dist"
 	},
+	"typedocOptions": {
+		"inputFiles": "src/index.ts",
+		"out": "webdocs"
+	},
 	"include": ["src/**/*.ts"]
 }

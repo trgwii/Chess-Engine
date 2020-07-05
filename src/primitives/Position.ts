@@ -9,10 +9,12 @@ export type HPosition = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'h7' | 'h8';
 
 export type File = 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h';
 export const files = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+/** Utility function for determining if a string is a valid chess file (a-h) */
 export const isFile = (x: string): x is File => files.includes(x);
 
 export type Rank = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8';
 export const ranks = ['1', '2', '3', '4', '5', '6', '7', '8'];
+/** Utility function for determining if a string is a valid chess rank (1-8) */
 export const isRank = (x: string): x is Rank => ranks.includes(x);
 
 export const positions = files.flatMap(file =>
@@ -29,5 +31,6 @@ export type Position =
 	| GPosition
 	| HPosition;
 
+/** Utility function for determining if a string is a valid chess position of the form "e4" */
 export const isPosition = (x: string): x is Position =>
 	x.length === 2 && isFile(x[0]) && isRank(x[1]);

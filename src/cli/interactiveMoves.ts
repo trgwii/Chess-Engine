@@ -1,11 +1,11 @@
 import { createInterface } from 'readline';
 
-import { initialGame } from './primitives/initialGame';
-import { showBoard } from './cli/showBoard';
-import { move } from './primitives/Game';
-import { getCell } from './primitives/Board';
-import { isPosition } from './primitives/Position';
-import { Move } from './primitives/Move';
+import { initialGame } from '../primitives/initialGame';
+import { showBoard } from './showBoard';
+import { move } from '../primitives/Game';
+import { getCell } from '../primitives/Board';
+import { isPosition } from '../primitives/Position';
+import { Move } from '../primitives/Move';
 
 export const showMove = (move: Move): string =>
 	`${move.piece.set} moved ${move.piece.kind} to ${move.to}`;

@@ -6,12 +6,12 @@ import {
 	coord,
 	coordsToPosition
 } from './Board';
-import type { Side } from './Side';
-import { Set, Piece, equals, oppositeSet } from './Piece';
+import { Side, Set, Piece, equals, oppositeSet } from './Piece';
 import { Position, positions } from './Position';
 import { Move } from './Move';
 import { last } from '../utils';
 
+/** Object representing the entire game state for a chess game in any state */
 export interface Game {
 	castling: {
 		[k in Set]: { [k in Side]: boolean };
@@ -23,6 +23,7 @@ export interface Game {
 	history: Move[];
 }
 
+/** Utility function for determining if a piece is in a given position on a board */
 export const pieceInPosition = (
 	piece: Piece,
 	position: Position,
@@ -35,6 +36,7 @@ export const pieceInPosition = (
 	return equals(piece, boardPiece);
 };
 
+/** Utility function for determining if a position is being attacked by an enemy piece */
 export const attackedPosition = (
 	position: Position,
 	attackedBy: Set,
@@ -49,6 +51,7 @@ export const attackedPosition = (
 	return false;
 };
 
+/** Utility function for determining if a specific move can be legally made on a chess board */
 export const canMove = (
 	move: Move,
 	game: Game,
@@ -133,6 +136,7 @@ export const canMove = (
 	return false;
 };
 
+/** Utility function for updating piece positions and appending to game history in a game state when making a move */
 export const makeMove = (move: Move, game: Game): Game => ({
 	...game,
 	history: [...game.history, move],
@@ -143,6 +147,7 @@ export const makeMove = (move: Move, game: Game): Game => ({
 	)
 });
 
+/** Check if a move is legal and apply it to a game state */
 export const move = (move: Move, game: Game): Game => {
 	if (!pieceInPosition(move.piece, move.from, game.board)) {
 		throw new Error('No piece at ' + move.from);
@@ -155,6 +160,7 @@ export const move = (move: Move, game: Game): Game => {
 	return makeMove(move, game);
 };
 
+/** Utility function for listing possible moves for a specific position in a given game state */
 export const availableMovesFor = (position: Position, game: Game): Move[] => {
 	const piece = getCell(position, game.board);
 	if (!piece) {
@@ -169,6 +175,7 @@ export const availableMovesFor = (position: Position, game: Game): Move[] => {
 	});
 };
 
+/** Utility function for listing all possible moves in a given game state */
 // TODO: implement availableMoves
 export const availableMoves = (game: Game): Move[] => {
 	const turn = oppositeSet(last(game.history)?.piece.set ?? 'black');

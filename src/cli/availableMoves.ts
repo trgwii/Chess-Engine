@@ -1,6 +1,6 @@
-import { showBoard } from './cli/showBoard';
-import { availableMoves, move } from './primitives/Game';
-import { initialGame } from './primitives/initialGame';
+import { showBoard } from './showBoard';
+import { availableMoves, move } from '../primitives/Game';
+import { initialGame } from '../primitives/initialGame';
 
 const game2 = move(
 	{ from: 'a2', to: 'a3', piece: { set: 'white', kind: 'P' } },
